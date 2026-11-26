@@ -1,29 +1,23 @@
-ESP32 Biometric Attendance System
+# ESP32 Biometric Attendance System
 
 A fingerprint-based attendance and identity verification system developed during my university studies using ESP32 and an optical fingerprint sensor.
 
 The project demonstrates practical applications of embedded systems, biometric authentication, hardware integration, and serial communication.
 
-Key Features
+## Key Features
 
-Fingerprint enrollment and identity verification.
+- Fingerprint enrollment and identity verification.
+- Dual-scan biometric template validation.
+- Persistent biometric template storage.
+- Unique user ID assignment (1–127).
+- Offline fingerprint matching.
+- UART2 hardware communication.
+- Arabic Serial Monitor interface.
+- Basic error handling.
 
-Dual-scan biometric template validation.
+## System Architecture
 
-Persistent biometric template storage.
-
-Unique user ID assignment (1–127).
-
-Offline fingerprint matching.
-
-UART2 hardware communication.
-
-Arabic Serial Monitor interface.
-
-Basic error handling.
-
-System Architecture
-
+```mermaid
 flowchart TD
     A[User Fingerprint] --> B[Fingerprint Sensor]
     B <--> C[Local Biometric Storage]
@@ -31,141 +25,83 @@ flowchart TD
     D --> E{Verification Result}
     E -->|Matched| F[Display Student ID]
     E -->|Not Matched| G[Unknown Fingerprint]
+```
 
-Technology Stack
+## Technology Stack
 
-Technology
+| Technology | Purpose |
+|---|---|
+| ESP32 | Embedded processing |
+| Optical Fingerprint Sensor | Biometric authentication |
+| Arduino IDE | Development environment |
+| C++ | Embedded programming |
+| Arduino Framework | Microcontroller development |
+| Adafruit Fingerprint Library | Sensor integration |
+| UART2 | Serial communication |
 
-Purpose
+## Hardware Wiring
 
-ESP32
+| Fingerprint Sensor | ESP32 |
+|---|---|
+| Red – VCC | 3.3V |
+| Black – GND | GND |
+| Yellow – TX | GPIO 16 (RX) |
+| White – RX | GPIO 17 (TX) |
 
-Embedded processing
+## Communication Settings
 
-Optical Fingerprint Sensor
+- Serial Monitor Baud Rate: 115200
+- Fingerprint Sensor Baud Rate: 57600
+- Hardware Serial: UART2
+- Serial Configuration: 8N1
 
-Biometric authentication
+## Operating Modes
 
-Arduino IDE
-
-Development environment
-
-C/C++
-
-Embedded programming
-
-Adafruit Fingerprint Library
-
-Sensor integration
-
-UART2
-
-Serial communication
-
-Hardware Wiring
-
-Fingerprint Sensor
-
-ESP32
-
-Red – VCC
-
-3.3V
-
-Black – GND
-
-GND
-
-Yellow – TX
-
-GPIO 16 (RX)
-
-White – RX
-
-GPIO 17 (TX)
-
-Communication Settings
-
-Serial Monitor Baud Rate: 115200
-
-Fingerprint Sensor Baud Rate: 57600
-
-Hardware Serial: UART2
-
-Serial Configuration: 8N1
-
-Operating Modes
-
-Fingerprint Enrollment
+### Fingerprint Enrollment
 
 Captures two fingerprint scans, validates their consistency, generates a biometric template, and stores it in the sensor's internal memory with a unique user ID.
 
-Attendance Verification
+### Attendance Verification
 
 Scans fingerprints, searches stored biometric templates, and displays the matched student ID or an unknown fingerprint message through the Serial Monitor.
 
-Required Libraries & Tools
+## Required Libraries & Tools
 
-Arduino IDE
+- [Arduino IDE](https://www.arduino.cc/en/software)
+- [Adafruit Fingerprint Sensor Library](https://github.com/adafruit/Adafruit-Fingerprint-Sensor-Library)
+- [ESP32 by Espressif Systems](https://github.com/espressif/arduino-esp32)
 
-Adafruit Fingerprint Sensor Library
+## Source Code
 
-ESP32 by Espressif Systems
+| File | Function |
+|---|---|
+| [enrollment.ino](./enrollment.ino) | Fingerprint enrollment and storage |
+| [attendance.ino](./attendance.ino) | Fingerprint matching and attendance verification |
 
-Source Code
+## Getting Started
 
-File
+1. Install Arduino IDE.
+2. Install the ESP32 board package.
+3. Install the Adafruit Fingerprint Sensor Library.
+4. Verify the sensor's voltage requirements and connect the hardware.
+5. Upload the enrollment sketch and register fingerprints.
+6. Upload the attendance sketch.
+7. Open Serial Monitor at 115200 baud.
 
-Function
+## Cybersecurity Concepts
 
-enrollment.ino
+- Biometric Authentication
+- Identity Verification
+- Identity and Access Management (IAM)
+- Something You Are
 
-Fingerprint enrollment and storage
+## Skills Applied
 
-attendance.ino
-
-Fingerprint matching and attendance verification
-
-Getting Started
-
-Install Arduino IDE.
-
-Install the ESP32 board package.
-
-Install the Adafruit Fingerprint Sensor Library.
-
-Verify the sensor's voltage requirements and connect the hardware.
-
-Upload the enrollment sketch and register fingerprints.
-
-Upload the attendance sketch.
-
-Open Serial Monitor at 115200 baud.
-
-Cybersecurity Concepts
-
-Biometric Authentication
-
-Identity Verification
-
-Identity and Access Management (IAM)
-
-Something You Are
-
-Skills Applied
-
-Embedded Systems Programming
-
-C/C++ Programming
-
-Hardware Integration
-
-Biometric Authentication
-
-Serial Communication
-
-Data Processing
-
-Troubleshooting and Debugging
-
-System Architecture
+- Embedded Systems Programming
+- Embedded C++ Programming
+- Hardware Integration
+- Biometric Authentication
+- Serial Communication
+- Data Processing
+- Troubleshooting and Debugging
+- System Architecture
